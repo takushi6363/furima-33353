@@ -25,11 +25,11 @@
 | ---------------------- | ---------- | ------------------------------ |
 | product_name           | string     | null: false                    |
 | product_description    | text       | null: false                    |
-| product_category       | string     | null: false                    |
-| product_status         | string     | null: false                    |
-| shipping_charges       | string     | null: false                    |
-| delivery_area          | string     | null: false                    |
-| days_to_ship           | string     | null: false                    |
+| product_category_id    | integer    | null: false                    |
+| product_status_id      | integer    | null: false                    |
+| shipping_charges_id    | integer    | null: false                    |
+| delivery_area-id       | integer    | null: false                    |
+| days_to_ship_id        | integer    | null: false                    |
 | price                  | integer    | null: false                    |
 | user                   | references | null: false, foreign_key: true |
 
@@ -42,10 +42,6 @@
 
 | Column                 | Type       | Options                        |
 | ---------------------- | ---------- | ------------------------------ |
-| card_information       | integer    | null: false                    |
-| expiration_month       | integer    | null: false                    |
-| expiration_year        | integer    | null: false                    |
-| security_code          | integer    | null: false                    |
 | product                | references | null: false, foreign_key: true |
 | address                | references | null: false, foreign_key: true |
 
@@ -59,7 +55,7 @@
 | Column                 | Type       | Options                        |
 | ---------------------- | ---------- | ------------------------------ |
 | shipping_postal_code   | string     | null: false                    |
-| delivery_area          | string     | null: false                    |
+| delivery_area_id       | integer    | null: false                    |
 | shipping_municipality  | string     | null: false                    |
 | shipping_address       | string     | null: false                    |
 | shipping_building_name | string     |                                |
