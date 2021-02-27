@@ -16,7 +16,7 @@
 ### Association
 
 - has_many :products
-- has_namy :buy
+- has_many :buys
 
 
 ## products テーブル
@@ -43,7 +43,6 @@
 | Column                 | Type       | Options                        |
 | ---------------------- | ---------- | ------------------------------ |
 | product                | references | null: false, foreign_key: true |
-| address                | references | null: false, foreign_key: true |
 | user                   | references | null: false, foreign_key: true |
 
 ### Association
