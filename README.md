@@ -10,15 +10,14 @@
 | last_name               | string  | null: false |
 | first_name              | string  | null: false |
 | last_name_kana          | string  | null: false |
-| first_name_kana          | string  | null: false |
+| first_name_kana         | string  | null: false |
 | birthday                | date    | null: false |
-
-
 
 ### Association
 
 - has_many :products
 - has_one :address
+
 
 ## products テーブル
 
@@ -34,13 +33,12 @@
 | price                  | integer    | null: false                    |
 | user                   | references | null: false, foreign_key: true |
 
-
 ### Association
 - belongs_to :user
 - has_one    :buy
 
-## buys テーブル
 
+## buys テーブル
 
 | Column                 | Type       | Options                        |
 | ---------------------- | ---------- | ------------------------------ |
@@ -50,7 +48,6 @@
 | security_code          | integer    | null: false                    |
 | product                | references | null: false, foreign_key: true |
 | address                | references | null: false, foreign_key: true |
-
 
 ### Association
 - belongs_to :product
