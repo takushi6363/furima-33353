@@ -24,7 +24,7 @@
 | Column                 | Type       | Options                        |
 | ---------------------- | ---------- | ------------------------------ |
 | product_name           | string     | null: false                    |
-| product_description    | text       | null: false                    |
+| product_explanation    | text       | null: false                    |
 | product_category_id    | integer    | null: false                    |
 | product_status_id      | integer    | null: false                    |
 | shipping_charges_id    | integer    | null: false                    |
