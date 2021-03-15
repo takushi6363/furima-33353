@@ -6,6 +6,7 @@ class Product < ApplicationRecord
   belongs_to :prodict_status
   belongs_to :shipping_charges
   belongs_to :delivery_area
+  bekongs_to :days_to_ship
               
   validates :product_name, :product_explanation, presence: true
 
