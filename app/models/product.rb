@@ -5,6 +5,7 @@ class Product < ApplicationRecord
   belongs_to :product_category
   belongs_to :prodict_status
   belongs_to :shipping_charges
+  belongs_to :delivery_area
               
   validates :product_name, :product_explanation, presence: true
 
