@@ -3,6 +3,7 @@ class Product < ApplicationRecord
   
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :product_category
+  belongs_to :prodict_status
               
   validates :product_name, :product_explanation, presence: true
 
