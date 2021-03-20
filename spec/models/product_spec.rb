@@ -57,27 +57,27 @@ RSpec.describe Product, type: :model do
         expect(@product.errors.full_messages).to include('Image ファイルを添付してください')
       end
       it 'Product category のID１だと登録できない' do
-        @product.product_category_id = '1'
+        @product.product_category_id = 1
         @product.valid?
         expect(@product.errors.full_messages).to include('Product category 選択して下さい')
       end
       it 'Product status　のID１だと登録できない' do
-        @product.product_status_id = '1'
+        @product.product_status_id = 1
         @product.valid?
         expect(@product.errors.full_messages).to include('Product status 選択して下さい')
       end
       it 'Shipping charges　のID１だと登録できない' do
-        @product.shipping_charges_id = '1'
+        @product.shipping_charges_id = 1
         @product.valid?
         expect(@product.errors.full_messages).to include('Shipping charges 選択して下さい')
       end
       it 'Delivery area　のIDが１だと登録できない' do
-        @product.delivery_area_id = '1'
+        @product.delivery_area_id = 1
         @product.valid?
         expect(@product.errors.full_messages).to include('Delivery area 選択して下さい')
       end
       it 'Days to ship　のIDが１だと登録できない' do
-        @product.days_to_ship_id = '1'
+        @product.days_to_ship_id = 1
         @product.valid?
         expect(@product.errors.full_messages).to include('Days to ship 選択して下さい')
       end
@@ -93,11 +93,24 @@ RSpec.describe Product, type: :model do
         expect(@product.errors.full_messages).to include('Price 半角数字かつ300〜9,999,999の範囲で入力して下さい')
       end
       it 'Price が300未満だと登録できない' do
-        @product.price = '100'
+        @product.price = 100
         @product.valid?
         expect(@product.errors.full_messages).to include('Price 半角数字かつ300〜9,999,999の範囲で入力して下さい')
       end
       it 'Price が10,000,000以上だと登録できない' do
+        @product.price = 10000000
+        @product.valid?
+        expect(@product.errors.full_messages).to include('Price 半角数字かつ300〜9,999,999の範囲で入力して下さい')
+      end
+      it '半角英数混合では登録できないこと'do
+        @product.price = 'aaa100'
+        @product.valid?
+        expect(@product.errors.full_messages).to include('Price 半角数字かつ300〜9,999,999の範囲で入力して下さい')
+      end
+      it '半角英語だけでは登録できないこと'do
+        @product.price = 'aaaaaa'
+        @product.valid?
+        expect(@product.errors.full_messages).to include('Price 半角数字かつ300〜9,999,999の範囲で入力して下さい')
       end
     end
   end

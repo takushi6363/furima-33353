@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  before_action :authenticate_user!
+  
   def index
   end
 
@@ -7,7 +9,7 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @product = Product.create(create_params)
+    @product = Product.new(create_params)
     if @product.save
       redirect_to root_path
     else

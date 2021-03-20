@@ -9,11 +9,13 @@ class Product < ApplicationRecord
   belongs_to :delivery_area
   belongs_to :days_to_ship
 
-  validates :product_category_id, numericality: { other_than: 1, message: '選択して下さい' }
-  validates :product_status_id, numericality: { other_than: 1, message: '選択して下さい' }
-  validates :shipping_charges_id, numericality: { other_than: 1, message: '選択して下さい' }
-  validates :delivery_area_id, numericality: { other_than: 1, message: '選択して下さい' }
-  validates :days_to_ship_id, numericality: { other_than: 1, message: '選択して下さい' }
+  with_options numericality: { other_than: 1, message: '選択して下さい' } do
+  validates :product_category_id
+  validates :product_status_id
+  validates :shipping_charges_id
+  validates :delivery_area_id
+  validates :days_to_ship_id
+  end
   validate :image_presence
 
   with_options presence: { message: '文字を入力して下さい' } do
