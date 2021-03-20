@@ -1,7 +1,7 @@
 function check(){
   const itemPrice = document.getElementById("item-price")
   itemPrice.addEventListener('input',function(){
-    let fee = itemPrice.value * 0.1
+    let fee = Math.floor(itemPrice.value / 10)
     let profitPrice = itemPrice.value - fee
     let addTaxPrice = document.getElementById('add-tax-price');
     addTaxPrice.innerText =`${fee}`
