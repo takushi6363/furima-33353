@@ -11,11 +11,11 @@ RSpec.describe Product, type: :model do
         expect(@product).to be_valid
       end
       it 'priceが半角数字であれば登録できる' do
-        @product.price = '1000'
+        @product.price = 1000
         expect(@product).to be_valid
       end
       it 'priceが300〜9,999,999の範囲内の数字であれば登録できる' do
-        @product.price = '10000'
+        @product.price = 10000
         expect(@product).to be_valid
       end
       it 'Product categoryのIDが１でなければ登録できる' do
