@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
 
   def index
     @product = Product.all
+    @shipping_charges = ["着払い(購入者負担)","送料込み(出品者負担)"]
   end
 
   def new
