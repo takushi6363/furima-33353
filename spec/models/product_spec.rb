@@ -15,7 +15,7 @@ RSpec.describe Product, type: :model do
         expect(@product).to be_valid
       end
       it 'priceが300〜9,999,999の範囲内の数字であれば登録できる' do
-        @product.price = 10000
+        @product.price = 10_000
         expect(@product).to be_valid
       end
       it 'Product categoryのIDが１でなければ登録できる' do
@@ -98,16 +98,16 @@ RSpec.describe Product, type: :model do
         expect(@product.errors.full_messages).to include('Price 半角数字かつ300〜9,999,999の範囲で入力して下さい')
       end
       it 'Price が10,000,000以上だと登録できない' do
-        @product.price = 10000000
+        @product.price = 10_000_000
         @product.valid?
         expect(@product.errors.full_messages).to include('Price 半角数字かつ300〜9,999,999の範囲で入力して下さい')
       end
-      it '半角英数混合では登録できないこと'do
+      it '半角英数混合では登録できないこと' do
         @product.price = 'aaa100'
         @product.valid?
         expect(@product.errors.full_messages).to include('Price 半角数字かつ300〜9,999,999の範囲で入力して下さい')
       end
-      it '半角英語だけでは登録できないこと'do
+      it '半角英語だけでは登録できないこと' do
         @product.price = 'aaaaaa'
         @product.valid?
         expect(@product.errors.full_messages).to include('Price 半角数字かつ300〜9,999,999の範囲で入力して下さい')

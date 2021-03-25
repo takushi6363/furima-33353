@@ -10,11 +10,11 @@ class Product < ApplicationRecord
   belongs_to :days_to_ship
 
   with_options numericality: { other_than: 1, message: '選択して下さい' } do
-  validates :product_category_id
-  validates :product_status_id
-  validates :shipping_charges_id
-  validates :delivery_area_id
-  validates :days_to_ship_id
+    validates :product_category_id
+    validates :product_status_id
+    validates :shipping_charges_id
+    validates :delivery_area_id
+    validates :days_to_ship_id
   end
   validate :image_presence
 
