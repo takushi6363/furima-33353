@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_product, only: [:show, :edit, :update]
 
   def index
     @products = Product.includes(:user).order('created_at DESC')
@@ -19,16 +20,14 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id])
   end
 
   def edit
-    @product = Product.find(params[:id])
-    redirect_to root_path if current_user.id != @product.user.id
+    not_a_loggedin_user
   end
 
   def update
-    @product = Product.find(params[:id])
+    not_a_loggedin_user
     if @product.update(create_params)
       redirect_to item_path(params[:id])
     else
@@ -42,4 +41,13 @@ class ItemsController < ApplicationController
     params.require(:product).permit(:image, :product_name, :product_explanation, :product_category_id, :product_status_id,
                                     :shipping_charges_id, :delivery_area_id, :days_to_ship_id, :price).merge(user_id: current_user.id)
   end
+
+  def not_a_loggedin_user
+    redirect_to root_path if current_user.id != @product.user.id
+  end
+
+  def set_product
+    @product = Product.find(params[:id])
+  end
+
 end
