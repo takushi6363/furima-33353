@@ -26,6 +26,12 @@ class ItemsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
+  def update
+     product = Product.find(params[:id])
+     product.update(create_params)
+  end
+
+
 
   private
 
