@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_product, only: [:show, :edit, :update]
+  before_action :not_a_loggedin_user, only: [:edit, :update]
 
   def index
     @products = Product.includes(:user).order('created_at DESC')
@@ -23,11 +24,9 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    not_a_loggedin_user
   end
 
   def update
-    not_a_loggedin_user
     if @product.update(create_params)
       redirect_to item_path(params[:id])
     else
