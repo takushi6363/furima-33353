@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_product, only: [:show, :edit, :update]
-  before_action :not_a_loggedin_user, only: [:edit, :update]
+  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :not_a_loggedin_user, only: [:edit, :update, :destroy]
 
   def index
     @products = Product.includes(:user).order('created_at DESC')
@@ -34,6 +34,11 @@ class ItemsController < ApplicationController
     end
   end
 
+  def destroy
+    @product.destroy
+    redirect_to root_path
+  end
+
   private
 
   def create_params
@@ -48,5 +53,4 @@ class ItemsController < ApplicationController
   def set_product
     @product = Product.find(params[:id])
   end
-
 end
