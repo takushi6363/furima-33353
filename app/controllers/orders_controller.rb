@@ -7,6 +7,7 @@ class OrdersController < ApplicationController
 
   def create
     @user_buy = UserBuy.new(buy_params)
+    binding.pry
     if @user_buy.valid?
       @user_buy.save
       redirect_to root_path
@@ -19,7 +20,7 @@ class OrdersController < ApplicationController
 
     private
    def buy_params
-    params.require(:user_buy).permit(:shipping_postal_code, :delivery_area_id, :shipping_municipality, :shipping_address, :shipping_building_name, :phone_number)
+    params.require(:user_buy).permit(:shipping_postal_code, :delivery_area_id, :shipping_municipality, :shipping_address, :shipping_building_name, :phone_number).merge(token: params[:token])
    end
 
 end
