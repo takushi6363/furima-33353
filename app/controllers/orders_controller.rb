@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
   before_action :set_product,only: [:index, :create]
+  before_action :already_sold
   
   def index
     @user_buy = UserBuy.new
@@ -36,6 +37,12 @@ class OrdersController < ApplicationController
       currency: 'jpy'     
     )
    end
+
+   def already_sold
+    if @product.buy != nil
+       redirect_to root_path
+    end
+  end
 
 
 end
