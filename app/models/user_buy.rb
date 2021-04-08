@@ -11,7 +11,7 @@ class UserBuy
    validates :item_id
    validates :token
   end
-  validates :delivery_area_id,    numericality: { other_than: 0, message: "選択して下さい" }
+  validates :delivery_area_id,    numericality: { other_than: 1, message: "選択して下さい" }
   validate :shipping_building_name
 
   def save
