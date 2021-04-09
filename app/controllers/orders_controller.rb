@@ -15,7 +15,6 @@ class OrdersController < ApplicationController
       @user_buy.save
       redirect_to root_path
     else
-      set_product
       render action: :index
     end
   end
@@ -44,9 +43,8 @@ class OrdersController < ApplicationController
   def already_sold
     redirect_to root_path unless @product.buy.nil?
   end
-  
+
   def seller
     redirect_to root_path if current_user.id == @product.user.id
   end
-
 end

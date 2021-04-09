@@ -73,6 +73,11 @@ RSpec.describe UserBuy, type: :model do
         @user_buy.valid?
         expect(@user_buy.errors.full_messages).to include('Phone number 11桁以内で入力してください')
       end
+      it 'phone_numberが英数混合では登録できないこと' do
+        @user_buy.phone_number = '123456abc'
+        @user_buy.valid?
+        expect(@user_buy.errors.full_messages).to include('Phone number 数字で入力して下さい')
+      end
       it 'delivery_area_idが１だと登録できない' do
         @user_buy.delivery_area_id =  1
         @user_buy.valid?
