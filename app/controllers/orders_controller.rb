@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
   before_action :set_product, only: [:index, :create]
   before_action :already_sold
+  before_action :seller
 
   def index
     @user_buy = UserBuy.new
@@ -43,4 +44,9 @@ class OrdersController < ApplicationController
   def already_sold
     redirect_to root_path unless @product.buy.nil?
   end
+  
+  def seller
+    redirect_to root_path if current_user.id == @product.user.id
+  end
+
 end

@@ -58,4 +58,5 @@ class ItemsController < ApplicationController
   def already_sold
     redirect_to root_path unless @product.buy.nil?
   end
+
 end
